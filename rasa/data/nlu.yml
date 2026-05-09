@@ -1,0 +1,34 @@
+version: "3.1"
+nlu:
+  - intent: greet
+    examples: |
+      - hi
+      - hello
+      - hey
+      - good morning
+      - good evening
+  - intent: who_are_you
+    examples: |
+      - who are you
+      - what are you
+      - what can you do
+  - intent: provide_symptoms
+    examples: |
+      - I have [headache](symptom) and [nausea](symptom)
+      - I'm feeling [itching](symptom) with [skin rash](symptom)
+      - [fever](symptom) and [cough](symptom) for 2 days
+      - [jaw pain](symptom)
+      - [head ache](symptom) and [vomiting](symptom)
+      - [skin_rash](symptom) since yesterday
+  - synonym: headache
+    examples: |
+      - head ache
+      - head_ache
+  - synonym: skin rash
+    examples: |
+      - skin_rash
+      - skinrash
+  - synonym: jaw pain
+    examples: |
+      - jaw_pain
+      - jawpain

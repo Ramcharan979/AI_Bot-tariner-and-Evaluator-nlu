@@ -1,0 +1,19 @@
+# Simplified requirements for easier Windows installation
+# Install these packages one by one if you encounter issues
+
+flask==3.0.0
+flask-cors==4.0.0
+python-dotenv==1.0.0
+
+# These will use pre-built wheels on Windows
+numpy
+pandas
+scikit-learn
+
+# PyTorch CPU version (lighter, no CUDA needed)
+--index-url https://download.pytorch.org/whl/cpu
+torch
+
+# Transformers
+transformers
+

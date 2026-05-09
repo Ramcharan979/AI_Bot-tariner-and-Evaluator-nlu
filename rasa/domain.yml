@@ -1,0 +1,94 @@
+version: "3.1"
+
+intents:
+  - greet
+  - provide_symptoms
+  - chitchat
+  - who_are_you
+  - nlu_fallback
+  - out_of_scope
+  # Navigation intents for sidebar sections
+  - open_datasets
+  - open_training
+  - open_domain
+
+entities:
+  - symptom
+  - duration
+
+slots:
+  symptoms:
+    type: list
+    influence_conversation: false
+  duration_days:
+    type: float
+    influence_conversation: false
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I help you today?"
+  utter_who_are_you:
+    - text: "I'm your AI health assistant. Describe your symptoms, and I will try to help you."
+  utter_chitchat:
+    - text: "I'm here to help with health-related questions. How are you feeling today?"
+  utter_ask_symptoms:
+    - text: "Please describe your symptoms and how long you've had them."
+  utter_fallback:
+    - text: "Sorry, I didn't quite get that. Could you rephrase?"
+  utter_out_of_scope:
+    - text: "I'm not able to help with that. I can assist with health-related symptoms and guidance."
+  utter_api_unavailable:
+    - text: "I'm using fallback data right now because the health API isn't reachable. I can still give general guidance."
+  # New navigation responses
+  utter_open_datasets:
+    - text: "Opening Rasa Datasets."
+  utter_open_training:
+    - text: "Opening Rasa Training."
+  utter_open_domain:
+    - text: "Opening Rasa Domain."
+
+rules:
+  - rule: respond to greet
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: respond who are you
+    steps:
+      - intent: who_are_you
+      - action: utter_who_are_you
+
+  - rule: handle chitchat
+    steps:
+      - intent: chitchat
+      - action: utter_chitchat
+
+  - rule: nlu fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_fallback
+
+  - rule: out of scope
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  # New navigation rules
+  - rule: open datasets
+    steps:
+      - intent: open_datasets
+      - action: utter_open_datasets
+
+  - rule: open training
+    steps:
+      - intent: open_training
+      - action: utter_open_training
+
+  - rule: open domain
+    steps:
+      - intent: open_domain
+      - action: utter_open_domain
+
+session_config:
+  session_expiration_time: 60  # minutes
+  carry_over_slots_to_new_session: true

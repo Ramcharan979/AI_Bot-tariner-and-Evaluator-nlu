@@ -1,0 +1,9 @@
+lookup: symptom
+examples: |
+  - headache
+  - nausea
+  - itching
+  - skin rash
+  - fever
+  - cough
+  - jaw pain
